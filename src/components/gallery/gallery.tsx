@@ -9,9 +9,9 @@ export default function Gallery({ triggerRef }) {
           XCOMISSIONS
         </h1>
       </aside>
-      <div className="grid grid-cols-2 ">
+      <div className="flex flex-wrap">
         {comissionsImages.map((data) => (
-          <div className="pt-[2vw] px-[1vw]">
+          <div className="pt-[2vw] px-[1vw] w-[33vw]">
             <img
               id={data.alt}
               src={data.name}
@@ -20,8 +20,8 @@ export default function Gallery({ triggerRef }) {
             />
           </div>
         ))}
-        <div className="text-[#694F8E]  my-auto text-right pr-[3vw] text-[4vw]">
-          <button className="text-right">
+        <div className="text-[#694F8E] flex justify-end w-[33vw] h-auto  pr-[1vw] text-[4vw]">
+          <button className="text-right float-right  ">
             <p>FULL </p>
             <p>GALLERY</p>
           </button>
