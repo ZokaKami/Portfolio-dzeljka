@@ -22,6 +22,18 @@ export const comissionsImages = [
     name: Frog,
     alt: "Frog",
   },
+  {
+    name: Frog,
+    alt: "Frog",
+  },
+  {
+    name: Frog,
+    alt: "Frog",
+  },
+  {
+    name: Frog,
+    alt: "Frog",
+  },
  
 
 ];

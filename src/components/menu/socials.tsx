@@ -4,7 +4,7 @@ export default function Socials() {
   const Socials = ["LINKEDIN", "INSTAGRAM", "ARTSTATION"];
   return (
     <div className="mx-auto my-auto space-y-[0.5vw]">
-      <div className="w-[6vw] h-[6vw] mx-auto   ">
+      <div className="w-[5vw] h-[5vw] mx-auto   ">
         {" "}
         <img src={Pfp} className="w-full h-full rounded-full mx-auto" alt="" />
       </div>
