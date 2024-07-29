@@ -8,7 +8,7 @@ export default function MenuItems() {
     "MENU CREATE",
   ];
   return (
-    <div className="my-auto opacity-70 pt-[3vw]">
+    <div className="  opacity-70 pt-[3vw]">
       {MenuItems.map((index) => (
         <div className="flex justify-between px-[1vw]">
           <span> &lt;</span>

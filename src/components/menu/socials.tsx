@@ -13,7 +13,7 @@ export default function Socials() {
           className="border-[0.15vw] border-[#FFDFD6]  rounded-full py-[0.1vw] px-[0.4vw]"
           href=""
         >
-          SEND MESSAGE X
+          ABOUT ME
         </a>
       </div>
 
