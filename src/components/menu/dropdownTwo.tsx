@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+export default function Dropdown({ dropDown, socials, handleDropdown }) {
+  const menuitems = [
+    "HOME",
+    "COMISSIONS",
+    "PIXEL ART",
+    "THIRD PARTY",
+    "FOURTH PARTY",
+  ];
 
-export default function Dropdown({ dropDown, socials }) {
+  const [activeButton, setActiveButton] = useState("HOME");
   useEffect(() => {
     // Lock scroll when dropdown is open
     if (dropDown) {
@@ -16,30 +25,40 @@ export default function Dropdown({ dropDown, socials }) {
       document.body.style.overflow = "auto";
     };
   }, [dropDown]);
+  const handleActiveButton = (id) => {
+    setActiveButton(id);
+  };
   return (
     <nav
-      className={`fixed flex flex-col top-0 left-0 w-full h-[100vh] bg-white text-[3.6vw] md:text-[1.9vw]  transform transition-transform duration-300 ease-in-out z-10 ${
+      className={`fixed flex flex-col top-0 left-0 w-full h-[100vh] bg-white text-[3.6vw] md:text-[1.9vw]  transform transition-transform duration-700 ease-in-out z-10 ${
         dropDown
           ? "translate-x-0 overflow-auto"
           : "-translate-x-full overflow-hidden"
       }`}
     >
       <ul className="h-fill  flex flex-col flex-grow justify-center px-4 text-[2.35em] md:text-[3em]">
-        <li>
-          <button> x HOME</button>
-        </li>
-        <li>
-          <button>COMISSIONS</button>
-        </li>
-        <li>
-          <button>PIXEL ART</button>
-        </li>
-        <li>
-          <button>THIRD PARTY</button>
-        </li>
-        <li>
-          <button>FOURTH PARTY</button>
-        </li>
+        {menuitems.map((items) => (
+          <li
+            id={items}
+            onClick={() => handleActiveButton(items)}
+            className={
+              activeButton === items ? "text-red-400  " : "text-blue-400 "
+            }
+          >
+            {activeButton === items ? (
+              <FontAwesomeIcon icon={faChevronRight} />
+            ) : (
+              ""
+            )}
+            <button
+              className="pl-[4px] sm:pl-[8px]  transform active:scale-50 transition-transform  "
+              onClick={handleDropdown}
+            >
+              {" "}
+              {items}
+            </button>
+          </li>
+        ))}
       </ul>
       <div className="py-2 space-x-2 flex justify-center">
         {socials.map((social) => (

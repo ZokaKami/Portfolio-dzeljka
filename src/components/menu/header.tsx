@@ -49,6 +49,7 @@ export default function Header() {
 
   const handleDropdown = () => {
     setDropdown(!dropDown);
+    console.log(dropDown);
   };
   return (
     <div>
@@ -62,7 +63,11 @@ export default function Header() {
           dropDown={dropDown}
           socials={socials}
         />
-        <Dropdown dropDown={dropDown} socials={socials} />
+        <Dropdown
+          dropDown={dropDown}
+          socials={socials}
+          handleDropdown={handleDropdown}
+        />
       </div>
     </div>
   );
