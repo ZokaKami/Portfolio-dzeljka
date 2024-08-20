@@ -17,7 +17,7 @@ export default function Gallery() {
 
             <div className="md:flex md:flex-wrap    ">
               {comissionsImages.map((data) => (
-                <div className="flex-[33%] md:max-w-[33%]  px-[1vw] py-[3vw] md:py-[1vw]">
+                <div className="flex-[50%] md:max-w-[50%] lg:max-w-[33%]  px-[1vw] py-[3vw] md:py-[1vw]">
                   <img
                     src={data.name}
                     className="w-[100%] h-auto object-cover"

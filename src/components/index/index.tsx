@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import Menu from "../menu/menu.tsx";
+import Header from "../menu/header.tsx";
 import Gallery from "../gallery/gallery.tsx";
 import Dropdown from "../menu/dropdownTwo.tsx";
 
 export default function Index() {
   return (
     <div>
-      <Menu></Menu>
+      <Header />
 
       <Gallery />
     </div>
