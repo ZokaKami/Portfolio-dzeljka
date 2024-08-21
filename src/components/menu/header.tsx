@@ -16,6 +16,13 @@ export default function Header() {
     { link: "https://artstation.com", img: faArtstation },
     { link: "https://instagram.com", img: faInstagram },
   ];
+  const menuitems = [
+    "HOME",
+    "COMISSIONS",
+    "PIXEL ART",
+    "THIRD PARTY",
+    "FOURTH PARTY",
+  ];
   const [dropDown, setDropdown] = useState(false);
 
   const [showHeader, setShowHeader] = useState(true);
@@ -49,24 +56,28 @@ export default function Header() {
 
   const handleDropdown = () => {
     setDropdown(!dropDown);
-    console.log(dropDown);
   };
   return (
-    <div>
+    <div className="  fixed  top-0 left-0   w-[100vw] lg:w-1/4   lg:h-[100vh]  lg:border-r-4 border-black">
       <div
-        className={`fixed  bg-white  w-[100vw] p-2  box-border transform transition-transform duration-300 ease-in-out ${
-          showHeader ? "tratranslate-y-0" : "translate-y-[-70px]"
+        className={`     bg-white    p-2 lg:p-0   box-border transform transition-transform duration-300 ease-in-out ${
+          showHeader
+            ? "tratranslate-y-0"
+            : "translate-y-[-70px] lg:translate-y-0"
         }`}
       >
         <SocialLinks
           handleDropdown={handleDropdown}
           dropDown={dropDown}
           socials={socials}
+          menuitems={menuitems}
         />
+
         <Dropdown
           dropDown={dropDown}
           socials={socials}
           handleDropdown={handleDropdown}
+          menuitems={menuitems}
         />
       </div>
     </div>

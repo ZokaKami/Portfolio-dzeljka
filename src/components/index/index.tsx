@@ -5,10 +5,16 @@ import Dropdown from "../menu/dropdownTwo.tsx";
 
 export default function Index() {
   return (
-    <div>
-      <Header />
+    <div className="flex lg:grid lg:grid-cols-4">
+      <div className="col-span-1">
+        {" "}
+        <Header />
+      </div>
 
-      <Gallery />
+      <div className="col-span-3">
+        {" "}
+        <Gallery />
+      </div>
     </div>
   );
 }

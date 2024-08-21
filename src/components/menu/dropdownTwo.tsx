@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-export default function Dropdown({ dropDown, socials, handleDropdown }) {
-  const menuitems = [
-    "HOME",
-    "COMISSIONS",
-    "PIXEL ART",
-    "THIRD PARTY",
-    "FOURTH PARTY",
-  ];
-
+export default function Dropdown({
+  dropDown,
+  socials,
+  handleDropdown,
+  menuitems,
+}) {
   const [activeButton, setActiveButton] = useState("HOME");
   useEffect(() => {
     // Lock scroll when dropdown is open
@@ -42,7 +39,7 @@ export default function Dropdown({ dropDown, socials, handleDropdown }) {
             id={items}
             onClick={() => handleActiveButton(items)}
             className={
-              activeButton === items ? "text-red-400  " : "text-blue-400 "
+              activeButton === items ? "text-blue-800  " : "text-blue-400 "
             }
           >
             {activeButton === items ? (
@@ -51,7 +48,7 @@ export default function Dropdown({ dropDown, socials, handleDropdown }) {
               ""
             )}
             <button
-              className="pl-[4px] sm:pl-[8px]  transform active:scale-50 transition-transform  "
+              className="pl-[4px] sm:pl-[8px]  transform active:scale-75 transition-transform  "
               onClick={handleDropdown}
             >
               {" "}
