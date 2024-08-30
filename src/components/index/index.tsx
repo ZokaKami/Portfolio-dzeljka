@@ -1,19 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Header from "../menu/header.tsx";
-import Gallery from "../gallery/gallery.tsx";
-import Dropdown from "../menu/dropdownTwo.tsx";
+import Gallery from "../gallery/homeGallery.tsx";
 
 export default function Index() {
+  const [activeButton, setActiveButton] = useState("COMISSIONS");
   return (
-    <div className="flex lg:grid lg:grid-cols-4">
+    <div className="flex lg:grid lg:grid-cols-5">
       <div className="col-span-1">
         {" "}
-        <Header />
+        <Header setActiveButton={setActiveButton} activeButton={activeButton} />
       </div>
 
-      <div className="col-span-3">
+      <div className="col-span-4">
         {" "}
-        <Gallery />
+        <Gallery activeButton={activeButton} />
       </div>
     </div>
   );

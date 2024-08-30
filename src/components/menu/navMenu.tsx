@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-export default function NavMenu({ menuitems, handleDropdown }) {
-  const [activeButtonDesktop, setActiveButtonDesktop] = useState("HOME");
-  const handleActiveButtonDesktop = (id) => {
-    setActiveButtonDesktop(id);
+export default function NavMenu({ menuitems, setActiveButton, activeButton }) {
+  // Set active navigation bar menu with HOME being default
+
+  const handleActiveButton = (id) => {
+    setActiveButton(id);
+    // Close dropdown after selecting a menu item
   };
   return (
-    <div className="  hidden  lg:flex flex-col px-[2vw] flex-grow text-[1vw] justify-center">
-      <ul className="h-fill text-[2em]">
-        {menuitems.map((items) => (
+    <div className="  hidden  lg:flex flex-col pl-[4vw] flex-grow text-[1vw] justify-center">
+      <ul className="h-fill text-[1.6em]">
+        {menuitems.map((item) => (
           <li
-            id={items}
-            onClick={() => handleActiveButtonDesktop(items)}
+            id={item}
+            onClick={() => handleActiveButton(item)}
             className={
-              activeButtonDesktop === items
-                ? "text-blue-800  "
-                : "text-blue-400 "
+              activeButton === item ? "text-blue-800  " : "text-blue-400 "
             }
           >
-            {activeButtonDesktop === items ? (
+            {activeButton === item ? (
               <FontAwesomeIcon icon={faChevronRight} />
             ) : (
               ""
             )}
             <button className="pl-[0.5vw]    transform active:scale-75 transition-transform  ">
               {" "}
-              {items}
+              {item}
             </button>
           </li>
         ))}

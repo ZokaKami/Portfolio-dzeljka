@@ -8,16 +8,22 @@ export default function SocialLinks({
   dropDown,
   socials,
   menuitems,
+  setActiveButton,
+  activeButton,
 }) {
   return (
     <div className="flex   lg:flex-col lg:h-[100vh] lg:pb-[0.5vw]  justify-around z-50">
       <img
         src={Pfp}
-        className="h-[45px] w-[45px] lg:w-[11vw] lg:h-[11vw] lg:mx-auto lg:pt-[1vw] rounded-full"
+        className="h-[45px] w-[45px] lg:w-[11vw] lg:h-[11vw] lg:mx-auto lg:mt-[1.5vw] rounded-full"
         alt=""
       />
 
-      <NavMenu menuitems={menuitems} />
+      <NavMenu
+        menuitems={menuitems}
+        setActiveButton={setActiveButton}
+        activeButton={activeButton}
+      />
 
       <nav className="flex  my-auto space-x-2  mx-auto">
         {socials.map((social) => (
