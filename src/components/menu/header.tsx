@@ -16,13 +16,7 @@ export default function Header({ setActiveButton, activeButton }) {
     { link: "https://artstation.com", img: faArtstation },
     { link: "https://instagram.com", img: faInstagram },
   ];
-  const menuitems = [
-    "HOME",
-    "COMISSIONS",
-    "PIXEL ART",
-    "THIRD PARTY",
-    "FOURTH PARTY",
-  ];
+  const menuitems = ["COMISSIONS", "FIRST", "SECOND", "THIRD"];
   //Mobile dropdown button
   const [dropDown, setDropdown] = useState(false);
   //Set active button in nav menu

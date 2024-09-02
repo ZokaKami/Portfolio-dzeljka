@@ -10,8 +10,8 @@ function App() {
 
   return (
     < div >
-        
-       <SideGallery setActiveButton={setActiveButton} activeButton={activeButton}></SideGallery>
+        <Index></Index>
+       
         
         
     </div >

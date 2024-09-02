@@ -4,8 +4,7 @@ import { comissionsImages } from "../gallery/comissionsImages.js";
 export default function Gallery({ activeButton, menuitems }) {
   const lowerCaseTitle = activeButton.toLowerCase();
   const render = comissionsImages[lowerCaseTitle]?.images;
-  console.log(comissionsImages.comissions.images);
-  console.log(activeButton);
+
   return (
     <div className="pt-8">
       <div>
