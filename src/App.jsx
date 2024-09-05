@@ -1,21 +1,52 @@
 import { useEffect, useState } from 'react'
-import Index from "./components/index/index.tsx"
- import SideGallery from './components/singlegallery/sideGallery.tsx'
- import HomeGallery from './components/gallery/homeGallery.tsx'
  
+ import HeaderShow from "./components/index/headerShow.tsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SideGallery from "./components/singlegallery/sideGallery.tsx";
  import './App.css'
 
 function App() {
-  const [activeButton, setActiveButton] = useState("COMISSIONS");
+ 
 
+  const [activeButton, setActiveButton] = useState("");
+  useEffect(() => {
+    console.log("Location changed:", location.pathname); // Debugging statement
+    const path = location.pathname;
+    const id = path.split("/").filter(Boolean).pop(); // Get the last part of the URL
+    console.log("Extracted ID:", id); // Debugging statement
+
+    if (id) {
+      setActiveButton(id.toUpperCase());
+    } else {
+      setActiveButton("");
+    }
+  }, [location, setActiveButton]);
+  console.log(activeButton)
   return (
-    < div >
-        <Index></Index>
-       
-        
-        
-    </div >
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HeaderShow
+              activeButton={activeButton}
+              setActiveButton={setActiveButton}
+            ></HeaderShow>
+          }
+        ></Route>
+        <Route
+          path={`/:id`}
+          element={
+            <SideGallery
+              activeButton={activeButton}
+              setActiveButton={setActiveButton}
+            ></SideGallery>
+          }
+        ></Route>
+      </Routes>
+    </BrowserRouter>
+  );
+
 }
 
 export default App

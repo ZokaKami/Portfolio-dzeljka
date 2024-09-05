@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export default function NavMenu({ menuitems, setActiveButton, activeButton }) {
   // Set active navigation bar menu with HOME being default
 
   const handleActiveButton = (id) => {
     setActiveButton(id);
+
     // Close dropdown after selecting a menu item
   };
   return (

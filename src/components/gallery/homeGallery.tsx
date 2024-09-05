@@ -17,16 +17,16 @@ export default function Gallery({ activeButton }) {
               </h1>
             </div>
 
-            <div className="md:flex md:flex-wrap  pt-[1.5vw]  ">
+            <div className="md:flex md:flex-wrap  pt-[1vw] lg:pl-[0.7vw]  ">
               {comissionsImages[index].images.map((data, idx) => (
                 <div
                   key={idx}
-                  className="flex-[50%] md:max-w-[50%] lg:max-w-[33%] px-[3vw] py-[1.5vw] md:py-[1vw] lg:p-[0.4vw]"
+                  className="flex-[50%] md:max-w-[50%] lg:max-w-[33%] px-[0.5vw] py-[1.5vw] md:py-[0.5vw] lg:p-[0.2vw]"
                 >
                   <img
                     src={data.name}
                     alt={data.alt}
-                    className="w-[100%] h-auto object-cover"
+                    className="w-[100%] h-full object-cover"
                   />
                 </div>
               ))}

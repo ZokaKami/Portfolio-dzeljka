@@ -3,7 +3,7 @@ import { comissionsImages } from "../gallery/comissionsImages.js";
 
 export default function Gallery({ activeButton, menuitems }) {
   const lowerCaseTitle = activeButton.toLowerCase();
-  const render = comissionsImages[lowerCaseTitle]?.images;
+  const render = comissionsImages[lowerCaseTitle]?.images || []; //Default to empty array
 
   return (
     <div className="pt-8">
@@ -20,12 +20,12 @@ export default function Gallery({ activeButton, menuitems }) {
             {render.map((data, idx) => (
               <div
                 key={idx}
-                className="flex-[50%] md:max-w-[50%] lg:max-w-[33%] px-[3vw] py-[1.5vw] md:py-[1vw] lg:p-[0.4vw]"
+                className="flex-[50%] md:max-w-[50%] lg:max-w-[33%] px-[0.5vw] py-[1.5vw] md:py-[0.5vw] lg:p-[0.2vw]"
               >
                 <img
                   src={data.name}
                   alt={data.alt}
-                  className="w-[100%] h-auto object-cover"
+                  className="w-[100%] h-full object-cover"
                 />
               </div>
             ))}
