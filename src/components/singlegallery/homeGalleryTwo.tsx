@@ -6,26 +6,19 @@ export default function Gallery({ activeButton, menuitems }) {
   const render = comissionsImages[lowerCaseTitle]?.images || []; //Default to empty array
 
   return (
-    <div className="pt-8">
+    <div className="pt-[2vw]">
       <div>
         <div>
-          <div className="h-[35vw] md:h-[17vw] lg:h-[20vw]   flex place-content-center border-dotted border-b-[0.8vw] 	md:border-b-[0.2vw]  border-black ">
-            <h1 className="grid  place-content-center mx-auto text-[9vw] md:text-[4vw] md:mt-[1vw] lg:mt-[-3vw]">
-              {" "}
-              {activeButton}
-            </h1>
-          </div>
-
-          <div className="md:flex md:flex-wrap  pt-[1.5vw]  ">
+          <div className="md:flex md:flex-wrap justify-center  pt-[3vw]   ">
             {render.map((data, idx) => (
               <div
                 key={idx}
-                className="flex-[50%] md:max-w-[50%] lg:max-w-[33%] px-[0.5vw] py-[1.5vw] md:py-[0.5vw] lg:p-[0.2vw]"
+                className="flex-[50%]  md:max-w-[50%] lg:max-w-[30%] px-[0.5vw] pt-[1vw] md:pt-[0.5vw]   "
               >
                 <img
                   src={data.name}
                   alt={data.alt}
-                  className="w-[100%] h-full object-cover"
+                  className="w-[100%] md:h-[70vw] h-full lg:h-[44vw] py-[0.5vw]     object-cover"
                 />
               </div>
             ))}

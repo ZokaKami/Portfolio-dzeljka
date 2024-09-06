@@ -12,7 +12,7 @@ export default function NavMenu({ menuitems, setActiveButton, activeButton }) {
     // Close dropdown after selecting a menu item
   };
   return (
-    <div className="  hidden  lg:flex flex-col pl-[4vw] flex-grow text-[1vw] justify-center">
+    <div className="  hidden  lg:flex flex-col pl-[2vw] flex-grow text-[1vw] justify-center">
       <ul className="h-fill text-[1.6em]">
         {menuitems.map((item) => (
           <li

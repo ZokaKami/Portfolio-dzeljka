@@ -40,34 +40,35 @@ export default function SideGallery({ activeButton, setActiveButton }) {
   const menuitems = ["COMISSIONS", "FIRST", "SECOND", "THIRD"];
 
   return (
-    <div>
-      <div className="fixed top-0 left-0 w-full pr-6 border-black">
-        <div className="flex justify-between bg-white p-2 box-border transform transition-transform duration-300 ease-in-out">
-          <button className="pt-2" onClick={handleBackButton}>
+    <div className="text-[1vw]">
+      <div className="fixed top-0 left-0 w-full pr-[1vw] border-black border-b-[0.2vw] border-dotted">
+        <div className="flex justify-between bg-white p-[0.5vw] box-border transform transition-transform duration-300 ease-in-out">
+          <button className="pt-[0.5vw]" onClick={handleBackButton}>
             -=back
           </button>
-          <ul className="flex space-x-2 pt-2 list-none">
+          <ul className="flex space-x-4 pt-[0.5vw] list-none text-[1.5vw]  ">
             {menuitems.map((item) => (
               <li
                 key={item}
                 id={item}
                 onClick={() => handleActiveButton(item)}
-                className={`cursor-pointer ${
+                className={`cursor-pointer  transform active:scale-75 transition-transform  ${
                   activeButton === item ? "text-blue-800" : "text-blue-400"
                 }`}
               >
                 <Link to={`/${item}`}>
-                  {activeButton === item && (
-                    <FontAwesomeIcon icon={faChevronRight} />
-                  )}
-                  <span className="pl-2 transform active:scale-75 transition-transform">
+                  <span className="pl-[0.5] transform active:scale-75 transition-transform">
                     {item}
                   </span>
                 </Link>
               </li>
             ))}
           </ul>
-          <img src={Pfp} className="h-12 w-12 rounded-full" alt="Profile" />
+          <img
+            src={Pfp}
+            className="h-[3vw] w-[3vw] rounded-full"
+            alt="Profile"
+          />
         </div>
       </div>
       <HomeGalleryTwo activeButton={activeButton} menuitems={menuitems} />
