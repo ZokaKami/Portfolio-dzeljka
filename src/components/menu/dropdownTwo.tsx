@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-
+import { useNavigate } from "react-router-dom";
 // Fullscreen dropdown menu
 export default function Dropdown({
   dropDown,
@@ -14,7 +14,7 @@ export default function Dropdown({
   hideOverflow,
 }) {
   // Lock scroll when dropdown is open
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (hideOverflow) {
       document.body.style.overflow = "hidden";
@@ -32,7 +32,7 @@ export default function Dropdown({
   // Set active menu button
   const handleActiveButton = (id) => {
     setActiveButton(id);
-
+    navigate(`/${id}`);
     handleDropdown(); // Close dropdown after selecting a menu item
   };
 

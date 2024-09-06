@@ -10,7 +10,7 @@ export default function Gallery({ activeButton }) {
       {desiredKeys.map((index) => (
         <div className="pb-[4vw]">
           <div>
-            <div className="h-[35vw] md:h-[17vw] lg:h-[9vw]   flex place-content-center border-dotted border-b-[0.8vw] 	md:border-b-[0.2vw]  border-black ">
+            <div className="h-[35vw] mt-[10vw] md:mt-0 md:h-[17vw] lg:h-[9vw]   flex place-content-center border-dotted border-b-[0.8vw] 	md:border-b-[0.2vw]  border-black ">
               <h1 className="grid  place-content-center mx-auto text-[9vw] md:text-[3vw] md:mt-[1vw] ">
                 {" "}
                 {index.toUpperCase()}
@@ -26,7 +26,7 @@ export default function Gallery({ activeButton }) {
                   <img
                     src={data.name}
                     alt={data.alt}
-                    className="md:h-[70vw] h-full lg:h-[44vw]   object-cover"
+                    className="md:h-[70vw] h-full   lg:h-[76vh] w-[100%]  object-cover"
                   />
                 </div>
               ))}
