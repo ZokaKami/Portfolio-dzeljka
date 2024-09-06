@@ -4,7 +4,7 @@ import { comissionsImages } from "./comissionsImages.js";
 export default function Gallery({ activeButton }) {
   const sectionTitle = ["COMISSIONS", "FIRST", "SECOND", "THIRD"];
   const desiredKeys = sectionTitle.map((title) => title.toLowerCase());
-  console.log(comissionsImages.title);
+
   return (
     <div className="pt-[1.5vw] ">
       {desiredKeys.map((index) => (

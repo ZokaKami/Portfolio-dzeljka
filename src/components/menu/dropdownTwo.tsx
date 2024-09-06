@@ -18,7 +18,6 @@ export default function Dropdown({
   useEffect(() => {
     if (hideOverflow) {
       document.body.style.overflow = "hidden";
-      console.log(hideOverflow);
     } else {
       document.body.style.overflow = "auto";
     }

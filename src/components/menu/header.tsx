@@ -35,7 +35,6 @@ export default function Header({ setActiveButton, activeButton }) {
         setDropdown(false);
         setHideNavbar(false);
         setHideOverflow(false);
-        console.log(hideOverflow);
       } else setHideNavbar(true);
     };
 
@@ -68,6 +67,7 @@ export default function Header({ setActiveButton, activeButton }) {
 
   const handleDropdown = () => {
     setDropdown(!dropDown);
+    console.log(dropDown);
     setHideOverflow(!hideOverflow);
   };
   return (

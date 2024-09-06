@@ -21,7 +21,7 @@ function App() {
       setActiveButton("");
     }
   }, [location, setActiveButton]);
-  console.log(activeButton)
+   
   return (
     <BrowserRouter>
       <Routes>
