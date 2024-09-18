@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Header from "../menu/header.tsx";
-import Gallery from "../gallery/homeGallery.tsx";
-import HeaderShow from ".//headerShow.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HeaderShow from "./headerShow.tsx";
 import SideGallery from "../singlegallery/sideGallery.tsx";
 
 export default function Index() {
@@ -17,18 +15,19 @@ export default function Index() {
             <HeaderShow
               activeButton={activeButton}
               setActiveButton={setActiveButton}
-            ></HeaderShow>
+            />
           }
-        ></Route>
+        />
+
         <Route
           path={`/${activeButton}`}
           element={
             <SideGallery
               activeButton={activeButton}
               setActiveButton={setActiveButton}
-            ></SideGallery>
+            />
           }
-        ></Route>
+        />
       </Routes>
     </BrowserRouter>
   );

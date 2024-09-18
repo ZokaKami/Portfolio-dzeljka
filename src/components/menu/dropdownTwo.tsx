@@ -1,20 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { MenuItems, Socials } from "../index/context";
 // Fullscreen dropdown menu
 export default function Dropdown({
   dropDown,
-  socials,
+
   handleDropdown,
-  menuitems,
+
   setActiveButton,
   activeButton,
-  setHideOverflow,
+
   hideOverflow,
 }) {
   // Lock scroll when dropdown is open
   const navigate = useNavigate();
+  const socials = useContext(Socials);
   useEffect(() => {
     if (hideOverflow) {
       document.body.style.overflow = "hidden";
@@ -22,19 +24,22 @@ export default function Dropdown({
       document.body.style.overflow = "auto";
     }
 
-    // Cleanup function to reset overflow style
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, [dropDown]);
+  }, [hideOverflow]);
 
   // Set active menu button
   const handleActiveButton = (id) => {
     setActiveButton(id);
-    navigate(`/${id}`);
-    handleDropdown(); // Close dropdown after selecting a menu item
-  };
+    handleDropdown(false);
 
+    // Add a short delay to allow the dropdown to close before navigating
+    setTimeout(() => {
+      navigate(`/${id}`);
+    }, 200); // Adjust the delay based on your dropdown animation duration
+  };
+  const menuItems = useContext(MenuItems);
   return (
     <nav
       className={`fixed flex flex-col top-0 left-0 w-full h-[100vh] bg-white text-[3.6vw] md:text-[1.9vw] transform transition-transform duration-700 ease-in-out z-10 ${
@@ -44,17 +49,19 @@ export default function Dropdown({
       }`}
     >
       <ul className="h-fill flex flex-col flex-grow justify-center px-4 text-[2.35em] md:text-[3em]">
-        {menuitems.map((item, index) => (
+        {menuItems.map((item, index) => (
           <li
             key={index} // Add a key prop for each list item
             id={item}
-            onClick={() => handleActiveButton(item)}
             className={
               activeButton === item ? "text-blue-800" : "text-blue-400"
             }
           >
             {activeButton === item && <FontAwesomeIcon icon={faChevronRight} />}
-            <button className="pl-[4px] sm:pl-[8px] transform active:scale-75 transition-transform">
+            <button
+              onClick={() => handleActiveButton(item)}
+              className="pl-[4px] sm:pl-[8px] transform active:scale-75 transition-transform"
+            >
               {item}
             </button>
           </li>

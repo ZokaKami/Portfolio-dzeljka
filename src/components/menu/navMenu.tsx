@@ -1,36 +1,40 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-export default function NavMenu({ menuitems, setActiveButton, activeButton }) {
-  // Set active navigation bar menu with HOME being default
+import { MenuItems } from "../index/context";
+export default function NavMenu({
+  setActiveButton,
+  activeButton,
+  setDropdown,
+}) {
+  // Access the menu list from context
 
   const handleActiveButton = (id) => {
+    setDropdown(false);
     setActiveButton(id);
-
-    // Close dropdown after selecting a menu item
   };
+  const menuItems = useContext(MenuItems);
+
   return (
-    <div className="  hidden  lg:flex flex-col pl-[2vw] flex-grow text-[1vw] justify-center">
+    <div className="hidden lg:flex flex-col pl-[2vw] flex-grow text-[1vw] justify-center">
       <ul className="h-fill text-[1.6em]">
-        {menuitems.map((item) => (
+        {menuItems.map((item) => (
           <li
+            key={item} // Add key to the list items
             id={item}
             onClick={() => handleActiveButton(item)}
             className={
-              activeButton === item ? "text-blue-800  " : "text-blue-400 "
+              activeButton === item ? "text-blue-800" : "text-blue-400"
             }
           >
-            {/* Navigation menu links  */}
             <Link to={`/${item}`}>
               {activeButton === item ? (
                 <FontAwesomeIcon icon={faChevronRight} />
               ) : (
                 ""
               )}
-              <button className="pl-[0.5vw]    transform active:scale-75 transition-transform  ">
-                {" "}
+              <button className="pl-[0.5vw] transform active:scale-75 transition-transform">
                 {item}
               </button>
             </Link>

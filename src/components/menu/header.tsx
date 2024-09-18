@@ -1,34 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInstagram,
-  faDiscord,
-  faArtstation,
-} from "@fortawesome/free-brands-svg-icons";
+import React, { useEffect, useState, useContext } from "react";
 
 import Dropdown from "./dropdownTwo.tsx";
 import SocialLinks from "./sociallinks.tsx";
 
 export default function Header({ setActiveButton, activeButton }) {
-  const socials = [
-    { link: "https://instagram.com", img: faInstagram },
-    { link: "https://discord.com", img: faDiscord },
-    { link: "https://artstation.com", img: faArtstation },
-    { link: "https://instagram.com", img: faInstagram },
-  ];
-  const menuitems = ["COMISSIONS", "FIRST", "SECOND", "THIRD"];
-  //Mobile dropdown button
-  const [dropDown, setDropdown] = useState(false);
-  //Set active button in nav menu
+  const [dropDown, setDropdown] = useState(
+    JSON.parse(sessionStorage.getItem("dropDown") || "false")
+  );
+  const [hideOverflow, setHideOverflow] = useState(
+    JSON.parse(sessionStorage.getItem("hideOverflow") || "false")
+  );
 
-  //Hide mobile navbar functions on desktop
-  const [hideNavbar, setHideNavbar] = useState(false);
-  //Usestate for the full screen dropdown animation
+  const [hideNavbar, setHideNavbar] = useState(true);
   const [headerAnimation, setHeaderAnimation] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [hideOverflow, setHideOverflow] = useState(false);
 
-  //UseEffect to turn off mobile functions on desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1024) {
@@ -42,32 +28,33 @@ export default function Header({ setActiveButton, activeButton }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  //Show and hide header on scroll
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
     if (currentScrollY - lastScrollY > 200) {
-      // User is scrolling down, hide the header
       setHeaderAnimation(false);
       setLastScrollY(currentScrollY);
     } else if (lastScrollY - currentScrollY > 10) {
-      // User is scrolling up, show the header
       setHeaderAnimation(true);
       setLastScrollY(currentScrollY);
     }
   };
 
-  //UseEffect to check for scroll distance
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
 
+  // Save the dropdown state to session storage when it changes
+  useEffect(() => {
+    sessionStorage.setItem("dropDown", JSON.stringify(dropDown));
+    sessionStorage.setItem("hideOverflow", JSON.stringify(hideOverflow));
+  }, [dropDown, hideOverflow]);
+
   const handleDropdown = () => {
     setDropdown(!dropDown);
-    console.log(dropDown);
+
     setHideOverflow(!hideOverflow);
   };
   return (
@@ -82,8 +69,7 @@ export default function Header({ setActiveButton, activeButton }) {
         <SocialLinks
           handleDropdown={handleDropdown}
           dropDown={dropDown}
-          socials={socials}
-          menuitems={menuitems}
+          setDropdown={setDropdown}
           setActiveButton={setActiveButton}
           activeButton={activeButton}
         />
@@ -91,12 +77,9 @@ export default function Header({ setActiveButton, activeButton }) {
         <div className={hideNavbar ? "block" : "hidden"}>
           <Dropdown
             dropDown={dropDown}
-            socials={socials}
             handleDropdown={handleDropdown}
-            menuitems={menuitems}
             setActiveButton={setActiveButton}
             activeButton={activeButton}
-            setHideOverflow={setHideOverflow}
             hideOverflow={hideOverflow}
           />
         </div>

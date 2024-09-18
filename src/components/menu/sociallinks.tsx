@@ -1,16 +1,18 @@
 import Pfp from "../images/ZeljkaPFP.png";
-import React from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import NavMenu from "./navMenu.tsx";
+import { Socials } from "../index/context.tsx";
 export default function SocialLinks({
   handleDropdown,
   dropDown,
-  socials,
-  menuitems,
+
   setActiveButton,
   activeButton,
+  setDropdown,
 }) {
+  const socials = useContext(Socials);
   return (
     <div className="flex   lg:flex-col lg:h-[100vh] lg:pb-[0.5vw]  justify-around z-50">
       <img
@@ -20,9 +22,9 @@ export default function SocialLinks({
       />
 
       <NavMenu
-        menuitems={menuitems}
         setActiveButton={setActiveButton}
         activeButton={activeButton}
+        setDropdown={setDropdown}
       />
 
       <nav className="flex  my-auto space-x-2  mx-auto">
@@ -39,7 +41,7 @@ export default function SocialLinks({
       </nav>
       <div className="h-[40px] w-[40px] z-50 lg:hidden ">
         <button
-          onClick={handleDropdown}
+          onClick={() => handleDropdown()}
           className={`w=[40px] fixed  text-black  transform active:scale-75   transition-transform ${
             dropDown ? "rotate-90 " : " "
           }`}

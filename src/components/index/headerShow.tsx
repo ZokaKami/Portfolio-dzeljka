@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+
 import Header from "../menu/header.tsx";
 import Gallery from "../gallery/homeGallery.tsx";
 
@@ -8,7 +9,6 @@ export default function HeaderShow({ setActiveButton, activeButton }) {
       <div className="col-span-1">
         <Header setActiveButton={setActiveButton} activeButton={activeButton} />
       </div>
-
       <div className="col-span-4">
         <Gallery activeButton={activeButton} />
       </div>

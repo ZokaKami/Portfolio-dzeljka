@@ -9,6 +9,7 @@ function App() {
  
 
   const [activeButton, setActiveButton] = useState("");
+  
   useEffect(() => {
     console.log("Location changed:", location.pathname); // Debugging statement
     const path = location.pathname;
